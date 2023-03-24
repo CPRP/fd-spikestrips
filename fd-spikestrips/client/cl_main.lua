@@ -22,7 +22,10 @@ RegisterNetEvent('fd-spikestrips:client:SpawnSpikeStrip', function()
   if #SpawnedSpikes + 1 < Config.MaxSpikes then
    if not IsPedInAnyVehicle(PlayerPedId()) then
     if Config.AllowSpikesOnlyForPolice then 
-     if PlayerData.job.name == "police" then
+    --  if PlayerData.job.name == "police" then
+    --     TriggerServerEvent('fd-spikestrips:server:removeItem')
+    --  else
+     if PlayerData.job.name == "police" or PlayerData.job.name == "bcso" or PlayerData.job.name == "sasp" or PlayerData.job.name == "sapr" then
         TriggerServerEvent('fd-spikestrips:server:removeItem')
      else 
       QBCore.Functions.Notify("Only police can use these!", 'error')
